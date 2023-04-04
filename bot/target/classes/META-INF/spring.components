@@ -1,0 +1,17 @@
+ru.tinkoff.edu.java.bot.BotApplication=org.springframework.stereotype.Component,org.springframework.boot.SpringBootConfiguration
+ru.tinkoff.edu.java.bot.configuration.ApplicationConfig=org.springframework.boot.context.properties.ConfigurationProperties
+ru.tinkoff.edu.java.bot.configuration.BeanConfig=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.configuration.ClientConfiguration=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.configuration.SwaggerConfig=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.controller.ScrapperTestController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.controller.UpdatesController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.handler.ControllerExceptionHandler=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.LinkService=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.bot.BotStarter=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.client.ScrapperClient=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.CommandList=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.impl.HelpCommand=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.impl.ListCommand=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.impl.StartCommand=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.impl.TrackCommand=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.bot.service.commands.impl.UntrackCommand=org.springframework.stereotype.Component
