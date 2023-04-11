@@ -1,0 +1,13 @@
+ru.tinkoff.edu.java.scrapper.ScrapperApplication=org.springframework.stereotype.Component,org.springframework.boot.SpringBootConfiguration
+ru.tinkoff.edu.java.scrapper.configuration.ApplicationConfig=org.springframework.boot.context.properties.ConfigurationProperties
+ru.tinkoff.edu.java.scrapper.configuration.BeanConfig=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.configuration.ClientConfiguration=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.configuration.SwaggerConfig=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.controller.GitHubTestController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.controller.LinksController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.controller.StackOverflowTestController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.controller.TgChatController=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.handler.ControllerExceptionHandler=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.schedule.LinkUpdaterScheduler=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.service.client.GitHubClient=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.service.client.StackOverflowClient=org.springframework.stereotype.Component

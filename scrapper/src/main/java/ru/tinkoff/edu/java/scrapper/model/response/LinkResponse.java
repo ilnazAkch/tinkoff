@@ -1,11 +1,15 @@
 package ru.tinkoff.edu.java.scrapper.model.response;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.net.URI;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class LinkResponse {
-    private Long id = null;
-
-    private String url = null;
-
+    private Long id;
+    private URI url;
 }
