@@ -51,14 +51,14 @@ public class CommandListTest {
         Update update = Mockito.mock(Update.class);
         Mockito.when(update.getMessage()). thenReturn(message);
         List<LinkResponse> links = new ArrayList<>();
-        links.add(new LinkResponse(1L, new URI("https://github.com/Eliorika/tinkoff-java-backend")));
+        links.add(new LinkResponse(1L, new URI("https://github.com/user/repa")));
         links.add(new LinkResponse(2L, new URI("https://stackoverflow.com/questions/4130857/why-companies-prefer-java-for-programming")));
         Mockito.when(scrapperClient.getLinks(chatId)).thenReturn(new ListLinksResponse(links, links.size()));
 
         SendMessage result = listCommand.handleCommand(update);
         SendMessage expected = new SendMessage(Long.toString(chatId), """
                 List of you tracking links
-                https://github.com/Eliorika/tinkoff-java-backend
+                https://github.com/user/repa
                 https://stackoverflow.com/questions/4130857/why-companies-prefer-java-for-programming
                 """);
 
