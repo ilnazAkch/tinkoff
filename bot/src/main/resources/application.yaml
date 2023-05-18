@@ -1,0 +1,9 @@
+app:
+    test: value
+    token: 5978046092:AAEqRHtB7-znzXTwA8420fBK0NvkNLpMFO8
+
+baseUrl:
+    scrapper: http://localhost:8081
+
+default:
+    timeout: 5

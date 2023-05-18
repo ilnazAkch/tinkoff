@@ -4,31 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tinkoff</groupId>
-    <artifactId>project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>groupId</groupId>
+    <artifactId>stackoverflow-scrapper</artifactId>
     <packaging>pom</packaging>
-
+    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>bot</module>
-        <module>link-parser</module>
         <module>scrapper</module>
+        <module>link-parser</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
-        <spring-boot.version>3.0.1</spring-boot.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <jetbrains-annotations.version>23.1.0</jetbrains-annotations.version>
-        <maven-surefire-failsafe.version>3.0.0</maven-surefire-failsafe.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>3.0.5</spring-boot.version>
+        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+        <openapi-generator-maven-plugin.version>6.4.0</openapi-generator-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -36,6 +32,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -43,14 +40,95 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.jetbrains</groupId>
                 <artifactId>annotations</artifactId>
-                <version>${jetbrains-annotations.version}</version>
+                <version>23.1.0</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>3.0.5</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>3.0.5</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-indexer</artifactId>
+                <version>6.0.7</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.26</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!--      task 3      -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-core</artifactId>
+                <version>2.2.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.github.pengrad</groupId>
+                <artifactId>java-telegram-TGBot-api</artifactId>
+                <version>6.6.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>0.9.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>5.9.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <build>
         <pluginManagement>
@@ -88,17 +166,43 @@
                         <parameters>true</parameters>
                     </configuration>
                 </plugin>
+
+                <!--task 3-->
+
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <skipValidateSpec>true</skipValidateSpec>
+                                <generatorName>spring</generatorName>
+                                <apiPackage>openapi.api</apiPackage>
+                                <configOptions>
+                                    <openApiNullable>false</openApiNullable>
+                                    <interfaceOnly>true</interfaceOnly>
+                                    <useSpringBoot3>true</useSpringBoot3>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven-surefire-failsafe.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-failsafe.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
 </project>
